@@ -1,0 +1,46 @@
+Check the Status:
+
+First, check the status of your local repository to see which files have been modified or are not yet committed.
+bash
+Copy code
+git status
+This will show you the current state of your working directory.
+Add and Commit Changes:
+
+Add the changes you want to commit to the staging area.
+bash
+Copy code
+git add .
+Commit the changes.
+bash
+Copy code
+git commit -m "Your commit message here"
+Push Changes to GitHub:
+
+Once you've committed your changes, you can push them to GitHub.
+
+bash
+Copy code
+git push origin <branch>
+Replace <branch> with the name of the branch you are working on, such as main or master.
+
+If you haven't set the upstream branch, you might need to use the following command:
+
+bash
+Copy code
+git push -u origin <branch>
+This command sets up tracking so that future pushes can be done with just git push.
+
+If you face issues with pushing, such as rejected pushes due to changes on the remote branch, you might need to pull the changes from GitHub first, resolve conflicts (if any), and then push again.
+
+bash
+Copy code
+git pull origin <branch>
+After resolving conflicts, add and commit the changes, and then push again.
+
+bash
+Copy code
+git add .
+git commit -m "Resolved conflicts"
+git push origin <branch>
+Always make sure to review your changes and commit messages before pushing to ensure a clean and accurate commit history.
