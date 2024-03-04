@@ -29,30 +29,50 @@ while (vehicleTypesList.length < numVehicleTypes) {
 
 const languages = ['English', 'French', 'Spanish', 'German', 'Chinese', 'Japanese', 'Russian', 'Arabic'];
 
-const numKnownLanguages = Math.floor(Math.random() * 4) + 1;
-const knownLanguages = [];
+// Function to generate random list of unique items from an array
+function generateRandomList(array, count) {
+    const result = [];
+    while (result.length < count) {
+        const randomIndex = Math.floor(Math.random() * array.length);
+        const randomItem = array[randomIndex];
 
-// Randomly select different languages 
-while (knownLanguages.length < numKnownLanguages) {
-    const randomIndex = Math.floor(Math.random() * languages.length);
-    const randomLanguage = languages[randomIndex];
-
-    // make sure language is not already in the list
-    if (!knownLanguages.includes(randomLanguage)) {
-        knownLanguages.push(randomLanguage);
+        if (!result.includes(randomItem)) {
+            result.push(randomItem);
+        }
     }
+    return result;
 }
 
-var crewInfo = new attendant.infoCrew("Mark Hellburg", 28, "Male", "American", knownLanguages);
-var attendantInfo = new attendant.flightAttendant("A001", crewInfo, "regular", "senior attendant", vehicleTypesList);
+const numKnownLanguages = Math.floor(Math.random() * 4) + 1;
+const knownLanguages = generateRandomList(languages, numKnownLanguages);
 
+const menu = ['Pasta', 'Chicken', 'Meatballs', 'Vegetarian Menu', 'Steak', 'ASPAVA'];
+const numMenuTypes = 3;
+const menuList = generateRandomList(menu, numMenuTypes);
 
-const flightInfo = attendantInfo.displayCrewInfo();
+console.log(menuList)
+
+var crewInfo1 = new attendant.infoCrew("Mark Hellburg", 28, "Male", "American", knownLanguages);
+var attendantInfo1 = new attendant.flightAttendant("A001", crewInfo1, "regular", "junior attendant", vehicleTypesList, menuList);
+
+var crewInfo2 = new attendant.infoCrew("Efe Baller", 25, "Male", "Turkish", knownLanguages);
+var attendantInfo2 = new attendant.flightAttendant("Ch002", crewInfo2, "chef", "chef", vehicleTypesList, menuList);
+
+var crewInfo3 = new attendant.infoCrew("Karen White", 38, "Female", "French", knownLanguages);
+var attendantInfo3 = new attendant.flightAttendant("C003", crewInfo3, "chief", "senior attendant", vehicleTypesList, menuList);
+
+var crewInfo4 = new attendant.infoCrew("Mike Smith", 32, "Male", "British", knownLanguages);
+var attendantInfo4 = new attendant.flightAttendant("A008", crewInfo4, "regular", "senior attendant", vehicleTypesList, menuList);
+
+const allAttendantInfo = [attendantInfo1, attendantInfo2, attendantInfo3, attendantInfo4];
+
+const flightInfo1 = attendantInfo1.displayCrewInfo();
 
 app.get('/', (req, res) => {
-    res.json(attendantInfo);
+    res.json(attendantInfo1);
 });
 
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
 });
+

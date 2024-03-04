@@ -21,8 +21,8 @@ Once you've committed your changes, you can push them to GitHub.
 
 bash
 Copy code
-git push origin <branch>
-Replace <branch> with the name of the branch you are working on, such as main or master.
+git push origin main
+Replace main with the name of the branch you are working on, such as main or master.
 
 If you haven't set the upstream branch, you might need to use the following command:
 
@@ -42,5 +42,5 @@ bash
 Copy code
 git add .
 git commit -m "Resolved conflicts"
-git push origin <branch>
+git push origin main
 Always make sure to review your changes and commit messages before pushing to ensure a clean and accurate commit history.
